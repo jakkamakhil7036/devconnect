@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import { getAssetUrl } from '../utils/api';
 import { 
   User, 
   Mail, 
@@ -175,7 +176,7 @@ const ProfilePage = () => {
           <div className="relative mx-auto h-32 w-32 group">
             {user?.profilePicture ? (
               <img
-                src={`http://localhost:5000${user.profilePicture}`}
+                src={getAssetUrl(user.profilePicture)}
                 alt={user.name}
                 className="h-32 w-32 rounded-3xl object-cover ring-4 ring-primary/10 group-hover:ring-primary/30 transition-all duration-300"
                 onError={(e) => {

@@ -3,6 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { Bell, Moon, Sun, LogOut, User as UserIcon, Menu } from 'lucide-react';
 import axios from 'axios';
+import { API_URL, getAssetUrl } from '../../utils/api';
 
 const Navbar = ({ onMenuClick }) => {
   const { user, logout, notifications, unreadCount, theme, toggleTheme, markNotificationRead, fetchNotifications } = useAuth();
@@ -18,7 +19,7 @@ const Navbar = ({ onMenuClick }) => {
     e.stopPropagation();
     try {
       const token = user?.token;
-      const res = await axios.put(`http://localhost:5000/api/invitations/${invitationId}`, { action }, {
+      const res = await axios.put(`${API_URL}/invitations/${invitationId}`, { action }, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -139,7 +140,7 @@ const Navbar = ({ onMenuClick }) => {
               <Link to="/profile" className="flex items-center gap-2 group">
                 {user.profilePicture ? (
                   <img
-                    src={`http://localhost:5000${user.profilePicture}`}
+                    src={getAssetUrl(user.profilePicture)}
                     alt={user.name}
                     className="h-8 w-8 rounded-xl object-cover ring-2 ring-primary/20 group-hover:ring-primary transition-all duration-200"
                     onError={(e) => {

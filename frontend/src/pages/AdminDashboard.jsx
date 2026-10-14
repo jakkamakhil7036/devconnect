@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import { getAssetUrl } from '../utils/api';
 import { Bar, Pie } from 'react-chartjs-2';
 import { 
   Users, 
@@ -236,7 +237,7 @@ const AdminDashboard = () => {
                     <tr key={item._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
                       <td className="py-3.5 px-4 flex items-center gap-2">
                         <img
-                          src={`http://localhost:5000${item.profilePicture}`}
+                          src={getAssetUrl(item.profilePicture)}
                           className="h-6 w-6 rounded-full object-cover"
                           onError={(e) => {
                             e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32";

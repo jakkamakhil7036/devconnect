@@ -104,6 +104,18 @@ devconnect/
 
 ---
 
+## Deployment
+
+Deploy the backend and frontend as separate services. In the frontend hosting
+service, set `VITE_API_URL` to the deployed backend API URL, including `/api`
+(for example, `https://your-backend.example.com/api`), then rebuild/redeploy
+the frontend. Local development can use `frontend/.env.example` as a template.
+The frontend uses this setting for both API requests and backend-hosted uploads.
+
+Configure the backend's `MONGO_URI`, `JWT_SECRET`, and `NODE_ENV=production`
+environment variables in its hosting service. Treat connection strings and
+secrets as private; do not commit them to the repository.
+
 ## Demo Accounts Credentials
 
 The database seed script populates the following accounts for test evaluation:

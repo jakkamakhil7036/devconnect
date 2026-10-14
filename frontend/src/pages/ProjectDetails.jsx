@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import { getAssetUrl } from '../utils/api';
 import { 
   Chart as ChartJS, 
   CategoryScale, 
@@ -768,7 +769,7 @@ const ProjectDetails = () => {
                                 {task.assignedTo ? (
                                   <div className="flex items-center gap-1.5 text-[10px] text-slate-500">
                                     <img 
-                                      src={`http://localhost:5000${task.assignedTo.profilePicture}`}
+                                      src={getAssetUrl(task.assignedTo.profilePicture)}
                                       className="h-5 w-5 rounded-full object-cover"
                                       onError={(e) => {
                                         e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32";
@@ -886,7 +887,7 @@ const ProjectDetails = () => {
                             </td>
                             <td className="py-3.5 px-4 flex items-center gap-2">
                               <img
-                                src={`http://localhost:5000${file.uploadedBy.profilePicture}`}
+                                src={getAssetUrl(file.uploadedBy.profilePicture)}
                                 className="h-5 w-5 rounded-full object-cover"
                                 onError={(e) => {
                                   e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32";
@@ -1001,7 +1002,7 @@ const ProjectDetails = () => {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <img
-                                  src={disc.user?.profilePicture ? `http://localhost:5000${disc.user.profilePicture}` : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32"}
+                                  src={disc.user?.profilePicture ? getAssetUrl(disc.user.profilePicture) : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32"}
                                   className="h-6 w-6 rounded-full object-cover"
                                   onError={(e) => {
                                     e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32";
@@ -1045,7 +1046,7 @@ const ProjectDetails = () => {
                     <div className="flex items-center justify-between border-b border-slate-100 pb-3 dark:border-slate-800">
                       <div className="flex items-center gap-2">
                         <img
-                          src={activeDisc.user?.profilePicture ? `http://localhost:5000${activeDisc.user.profilePicture}` : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32"}
+                          src={activeDisc.user?.profilePicture ? getAssetUrl(activeDisc.user.profilePicture) : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32"}
                           className="h-8 w-8 rounded-full object-cover"
                           onError={(e) => {
                             e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32";
@@ -1071,7 +1072,7 @@ const ProjectDetails = () => {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-1.5">
                             <img
-                              src={comment.user?.profilePicture ? `http://localhost:5000${comment.user.profilePicture}` : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32"}
+                              src={comment.user?.profilePicture ? getAssetUrl(comment.user.profilePicture) : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32"}
                               className="h-5 w-5 rounded-full object-cover"
                               onError={(e) => {
                                   e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=32";
@@ -1171,7 +1172,7 @@ const ProjectDetails = () => {
                     <div key={idx} className="flex items-center justify-between rounded-2xl bg-slate-50 dark:bg-slate-800/40 p-4 border border-slate-100/50 dark:border-slate-800">
                       <div className="flex items-center gap-3">
                         <img
-                          src={`http://localhost:5000${member.user.profilePicture}`}
+                          src={getAssetUrl(member.user.profilePicture)}
                           className="h-10 w-10 rounded-xl object-cover ring-2 ring-primary/10"
                           onError={(e) => {
                             e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=64";

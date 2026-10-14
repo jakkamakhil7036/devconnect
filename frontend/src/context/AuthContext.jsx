@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { API_URL } from '../utils/api';
 
 const AuthContext = createContext();
 
@@ -17,9 +18,6 @@ export const AuthProvider = ({ children }) => {
 
   // Dark/Light Mode state (Forced to dark!)
   const [theme, setTheme] = useState('dark');
-
-  // Base API url (relative to server localhost:5000 in dev)
-  const API_URL = 'http://localhost:5000/api';
 
   // Apply authorization token header helper
   const setAuthToken = (token) => {

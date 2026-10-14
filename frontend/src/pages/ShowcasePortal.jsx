@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import { getAssetUrl } from '../utils/api';
 import { 
   Heart, 
   MessageSquare, 
@@ -160,7 +161,7 @@ const ShowcasePortal = () => {
                   {hasImages ? (
                     <div className="relative h-48 w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-950">
                       <img 
-                        src={showcase.screenshots[currentImgIndex].startsWith('http') ? showcase.screenshots[currentImgIndex] : `http://localhost:5000${showcase.screenshots[currentImgIndex]}`}
+                        src={getAssetUrl(showcase.screenshots[currentImgIndex])}
                         alt={showcase.title}
                         className="h-full w-full object-cover"
                         onError={(e) => {
@@ -214,7 +215,7 @@ const ShowcasePortal = () => {
                       {showcase.teamMembers?.map(member => (
                         <div key={member._id} className="flex items-center gap-1 bg-slate-50/50 rounded-lg py-1 px-2 text-[10px] dark:bg-slate-900/35 border border-slate-100 dark:border-slate-800">
                           <img 
-                            src={`http://localhost:5000${member.profilePicture}`}
+                            src={getAssetUrl(member.profilePicture)}
                             className="h-4 w-4 rounded-full object-cover"
                             onError={(e) => {
                               e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=24";
@@ -294,7 +295,7 @@ const ShowcasePortal = () => {
                               <div className="flex items-center justify-between text-[9px] font-bold text-slate-550 dark:text-slate-400">
                                 <span className="flex items-center gap-1">
                                   <img 
-                                    src={`http://localhost:5000${comment.user.profilePicture}`}
+                                    src={getAssetUrl(comment.user.profilePicture)}
                                     className="h-4 w-4 rounded-full object-cover"
                                     onError={(e) => {
                                       e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=24";
